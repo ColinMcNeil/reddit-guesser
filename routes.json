@@ -1,0 +1,13 @@
+{
+  "middleware": [],
+  "routes": {
+    "Homepage": {
+      "path": "/",
+      "page": "pages/welcome.js"
+    },
+    "Game": {
+      "path": "/game",
+      "page": "pages/game.js"
+    }
+  }
+}
