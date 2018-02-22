@@ -1,0 +1,31 @@
+#image{
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background-color: rgb(40,40,40);
+    float:left;
+}
+#possible_subreddits{
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    left: 50%;
+    background-color: rgb(60,60,60);
+    float: left;
+    overflow-y: scroll;
+}
+.subreddit{
+    color: white;
+    background-color: rgb(63, 189, 63);
+    border-bottom: solid rgb(60,60,60) 2px;
+    padding: 10px;
+}
+.subreddit:hover{
+    background-color: rgb(54, 221, 54);
+    cursor: pointer;
+}
+#image{
+    color: white;
+    font-size:2rem; 
+    overflow-y: scroll;
+}

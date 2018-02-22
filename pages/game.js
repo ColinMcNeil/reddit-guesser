@@ -1,9 +1,11 @@
 import React from 'react';
-import game_component from '../components/game';
+import Game from '../components/game';
+import '../styles/main.css'
+import '../styles/game.css'
 
 export default class SimplePage {
 	getElements() {
-		return <game_component/>;
+		return <Game/>;
 	}
 
 	getMetaTags() {

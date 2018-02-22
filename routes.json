@@ -8,6 +8,10 @@
     "Game": {
       "path": "/game",
       "page": "pages/game.js"
+    },
+    "Fetch":{
+      "path": "/fetch",
+      "page": "pages/fetch.js"
     }
   }
 }

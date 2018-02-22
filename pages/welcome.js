@@ -1,6 +1,7 @@
 import React from 'react';
 import Welcome from '../components/welcome';
-import '../components/welcome.css'
+import '../styles/main.css'
+import '../styles/welcome.css'
 
 export default class SimplePage {
 	getElements() {
