@@ -24,13 +24,9 @@ export default class SimplePage{
                 console.log('No response')
             }
 
-            if (!response.data[0]) {
-                console.log('No response')
-                console.log(response)
-            }
             
 
-            console.log(response.data[0].data.children[0])
+            //console.log(response.data[0].data.children[0])
             let post = 'Error loading content!'
             if ('kind' in response.data) {
                 post = response.data.data.children[0].data;
@@ -49,7 +45,11 @@ export default class SimplePage{
             }
             else if ('preview' in post) {
                 responseContent = decodeURI(post.preview.images[0].source.url)
-                type='image'
+                type = 'image'
+            }
+            else if (post.url.startsWith('https://www.reddit.com/r/')) {
+                responseContent = decodeURI(post.title)
+                type='self'
             }
             else if (post.domain == 'i.redd.it') {
                 responseContent = decodeURI(post.url)

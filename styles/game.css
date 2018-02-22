@@ -33,3 +33,14 @@
 #imageEmbed{
     max-width: 100%;
 }
+#status{
+    position: absolute;
+    z-index: 20;
+    width: 50%;
+    left:50%;
+    transform: translateX(-50%);
+    background-color: rgba(3, 83, 0, 0.685);
+    color:white;
+    bottom: 0;
+    padding:10px;
+}

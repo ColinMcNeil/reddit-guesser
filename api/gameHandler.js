@@ -1,12 +1,16 @@
-import subreddits_json from './parsed_subreddits.json'
+import subreddits_json from '../api/parsed_subreddits.json'
 import axios from 'axios';
-import {logging} from 'react-server'
+import { logging } from 'react-server'
 const logger = logging.getLogger(__LOGGER__);
 export default class gameHandler{
 
-    constructor(num_to_gen_val) {
+    constructor(num_to_gen_val, rounds, page) {
+        this.rounds = rounds;
+        this.roundsDone = 1;
         this.num_to_gen_val = num_to_gen_val;
         this.subreddits_arr = subreddits_json.subreddits
+        
+        
     }
     generate_list = (num_to_gen, total_possible, NSFW = false) => {
         let used_indices = []
@@ -24,15 +28,25 @@ export default class gameHandler{
         }
         return possible_subreddits
     }
-    getList = function (page) {
+    getList = function (page, newpage=false) {
         this.listed = this.generate_list(this.num_to_gen_val, this.subreddits_arr)
         let index = Math.floor(Math.random() * Math.floor(this.num_to_gen_val - 1))
         this.correct = { index: index, name: encodeURI(this.listed[index].URL) };
-        console.log(`Correct is ${this.correct.name}, at index ${this.correct.index} in ${this.listed.toString()}`)
-        page.state={
-            subreddits: this.listed, imageURL: 'None',displayText: 'Starting', correct: this.correct.name,
-            correctIndex: this.correct.index
+        logger.debug(`Correct is ${this.correct.name}, at index ${this.correct.index} in `)
+        logger.debug(this.listed)
+        if (newpage) {
+            page.state = {
+                subreddits: this.listed, imageURL: 'None', displayText: 'Starting', correct: this.correct.name,
+                correctIndex: this.correct.index, pointsTemp: 10, points: 0
+            }
         }
+        else {
+            page.setState({
+                subreddits: this.listed, imageURL: 'None', displayText: 'Starting', correct: this.correct.name,
+                correctIndex: this.correct.index
+            })
+        }
+        
         this.getContent(page)
     }
     getContent = function (page,start=false) {
@@ -46,14 +60,15 @@ export default class gameHandler{
                     page.setState({imageURL: source.content })
                 }
                 if (source.type == 'self') {
-                    page.setState({displayText:source.content })
+                    let content = source.content;
+                    page.setState({displayText:content})
                 }
                 
-                console.log(source);
+                logger.debug(source);
                  
             })
             .catch(function (error) {
-                console.log(error);
+                logger.debug(error);
             });
         
     }
@@ -62,7 +77,7 @@ export default class gameHandler{
         while (index == correct) {
             index = Math.floor(Math.random() * Math.floor(total_possible-1));
         }
-        console.log(index)
+        logger.debug(index)
         return index
     }
     select = function (name,page) {
@@ -70,19 +85,32 @@ export default class gameHandler{
         if (this.correct.name.includes(name)) {
             this.getList(page)
             this.getContent(page)
+            this.roundsDone+=1;
+            if (this.roundsDone == this.rounds+1) {
+                page.setState({ points: 0, pointsTemp: 10 })
+            }
+            else {
+                page.setState({ points: (page.state.points + page.state.pointsTemp), pointsTemp: 10 })
+            }
+            //logger.debub(`Points:${}, pointsTemp`)
+            
         }
         else {
+            
             let names = this.listed.map((subreddit) => subreddit.name)
             let remove = names.indexOf(name)
-            console.log(remove)
+            logger.debug(remove)
             let trimmed = this.listed
-            console.log(trimmed)
+            logger.debug(trimmed)
             trimmed.splice(remove, 1)
-            trimmed.splice(this.index_to_remove(this.correctIndex, this.listed.length), 1)
-            console.log(trimmed)
+            //trimmed.splice(this.index_to_remove(this.correctIndex, this.listed.length), 1)
+            logger.debug(trimmed)
             this.listed = trimmed;
-            page.setState({ subreddits: this.listed })
+            page.setState({ subreddits: this.listed,pointsTemp:page.state.pointsTemp-1 })
+            
         }
+        
+        
         
     }
 }
