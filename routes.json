@@ -10,8 +10,8 @@
       "page": "pages/game.js"
     },
     "Fetch":{
-      "path": "/fetch",
-      "page": "pages/fetch.js"
+      "path": "/api/fetch",
+      "page": "api/fetch.js"
     }
   }
 }

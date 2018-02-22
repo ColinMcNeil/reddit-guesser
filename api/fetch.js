@@ -23,13 +23,25 @@ export default class SimplePage{
             if (!response) {
                 console.log('No response')
             }
+
             if (!response.data[0]) {
                 console.log('No response')
                 console.log(response)
             }
+            
 
             console.log(response.data[0].data.children[0])
-            let post = response.data[0].data.children[0].data;
+            let post = 'Error loading content!'
+            if ('kind' in response.data) {
+                post = response.data.data.children[0].data;
+            }
+            else if('kind' in response.data[0]) {
+                post = response.data[0].data.children[0].data;
+            }
+            else {
+                return post
+            }
+            
 
             if (post.selftext != '') {
                 responseContent = post.selftext
@@ -39,6 +51,14 @@ export default class SimplePage{
                 responseContent = decodeURI(post.preview.images[0].source.url)
                 type='image'
             }
+            else if (post.domain == 'i.redd.it') {
+                responseContent = decodeURI(post.url)
+                type = 'image'
+            }    
+            else if (post.domain == 'i.imgur.com') {
+                responseContent = decodeURI(post.url)
+                type = 'image'
+            }     
             else {
                 responseContent = post.title + ' from ' + post.domain;
                 type='article'

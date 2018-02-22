@@ -28,4 +28,8 @@
     color: white;
     font-size:2rem; 
     overflow-y: scroll;
+
+}
+#imageEmbed{
+    max-width: 100%;
 }
