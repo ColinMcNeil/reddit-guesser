@@ -22,12 +22,13 @@
 #title_container p{
     border:solid white 1px;
     padding:5px;
+    line-height: 25px;
 }
 #enter{
     background-color: rgb(48, 151, 72);
     width: auto;
     position: relative;
-    
+    font-size: 3rem;
     padding-top:5px;
     padding-bottom: 5px;
 }
