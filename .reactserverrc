@@ -16,7 +16,8 @@
       "port": "80",
       "logLevel": "error",
       "longTermCaching": true,
-      "hot": false
+      "hot": false,
+      host:"ec2-34-234-64-243.compute-1.amazonaws.com"
     }
   }
 }
