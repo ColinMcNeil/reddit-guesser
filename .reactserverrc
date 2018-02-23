@@ -12,12 +12,9 @@
     "staging": {
       "port": "4000"
     },
-    "production": {
+    "docker": {
       "port": "80",
-      "compileOnStartup": false,
-      "jsUrl": "/assets/",
       "logLevel": "error",
-      "minify": true,
       "longTermCaching": true,
       "hot": false
     }

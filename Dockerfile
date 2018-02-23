@@ -1,5 +1,5 @@
 FROM node:slim
 
-EXPOSE 3000
-ENV NODE_ENV=docker-dev
+EXPOSE 80
+ENV NODE_ENV=docker
 VOLUME /www

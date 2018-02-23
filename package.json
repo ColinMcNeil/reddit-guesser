@@ -6,8 +6,7 @@
   "scripts": {
     "start": "react-server start",
     "lint": "eslint test.js pages",
-    "test": "npm run lint && nsp check && ava test.js",
-    "start-prod":"NODE_ENV=production react-server start"
+    "test": "npm run lint && nsp check && ava test.js"
   },
   "license": "Apache-2.0",
   "dependencies": {
