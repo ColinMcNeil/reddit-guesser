@@ -13,7 +13,13 @@
       "port": "4000"
     },
     "production": {
-       "port": "80"
+      "port": "80",
+      "compileOnStartup": false,
+      "jsUrl": "/assets/",
+      "logLevel": "error",
+      "minify": true,
+      "longTermCaching": true,
+      "hot": false
     }
   }
 }
