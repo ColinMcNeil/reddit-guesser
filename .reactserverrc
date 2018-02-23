@@ -17,7 +17,7 @@
       "logLevel": "error",
       "longTermCaching": true,
       "hot": false,
-      host:"ec2-34-234-64-243.compute-1.amazonaws.com"
+      "host":"ec2-34-234-64-243.compute-1.amazonaws.com"
     }
   }
 }
