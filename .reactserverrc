@@ -1,6 +1,6 @@
 {
   "routesFile": "./routes.json",
-  "host": "0.0.0.0",
+  "host": "localhost",
   "port": 3000,
   "jsPort": 3001,
   "hot": true,
@@ -16,6 +16,7 @@
       "port": "80",
       "logLevel": "error",
       "longTermCaching": true,
+      "host": "0.0.0.0",
       "hot": false,
       "host":"ec2-34-234-64-243.compute-1.amazonaws.com"
     }
