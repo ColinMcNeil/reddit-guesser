@@ -1,5 +1,4 @@
 import React from 'react';
-import { logging } from 'react-server';
 import axios from 'axios';
 export default class SimplePage{
     setConfigValues() {
@@ -71,4 +70,3 @@ export default class SimplePage{
             });
     }
 }
-

@@ -1,11 +1,12 @@
 import React from 'react';
 import Script from 'react-load-script'
+import Router from 'next/router'
 export default class Welcome extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {buttonText: 'Play'};
 		this.play = () => {
-			console.log('Play')
+			Router.push('/game')
 		}
 	}
 	handleScriptCreate() {

@@ -8,6 +8,16 @@ export default () =>
         margin:0;
         padding: 0;
       }
-  
-  `}</style>
+      @import url('https://fonts.googleapis.com/css?family=Roboto');
+      html,body{
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        font-family: "Roboto";
+      }
+      ul {
+        margin-top: 0;
+      }
+    `}</style>
     </div>
